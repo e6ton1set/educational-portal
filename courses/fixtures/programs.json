@@ -1,0 +1,26 @@
+[
+  {
+    "model": "courses.program",
+    "pk": 1,
+    "fields": {
+      "title": "Для начинающих",
+      "slug": "dlya-nachinayushih"
+    }
+  },
+  {
+    "model": "courses.program",
+    "pk": 2,
+    "fields": {
+      "title": "Для продвинутых",
+      "slug": "dlya-prodvinutyh"
+    }
+  },
+  {
+    "model": "courses.program",
+    "pk": 3,
+    "fields": {
+      "title": "Для опытных спортсменов",
+      "slug": "dlya-opytnyh-sportsmenov"
+    }
+  }
+]
