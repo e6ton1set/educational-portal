@@ -16,7 +16,12 @@ ul {
     float:left;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2 {
+    color: black;
+    font-weight: 500;
+}
+
+h1, h3, h4, h5, h6 {
     font-family:'Roboto', sans-serif;
     font-weight:200;
     color: white;
