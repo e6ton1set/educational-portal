@@ -19,14 +19,16 @@ class Program(models.Model):
 class Course(models.Model):
     coach = models.ForeignKey(User,
                               related_name='courses_created',
-                              on_delete=models.CASCADE)
+                              on_delete=models.CASCADE,
+                              verbose_name='Тренер')
     program = models.ForeignKey(Program,
                                 related_name='courses',
-                                on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, unique=True)
-    review = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+                                on_delete=models.CASCADE,
+                                verbose_name='Программа')
+    title = models.CharField(max_length=200, verbose_name='Заголовок')
+    slug = models.SlugField(max_length=200, unique=True, verbose_name='Заголовок латиницей')
+    review = models.TextField(verbose_name='Краткое описание')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
 
     class Meta:
         ordering = ['-created_at']
