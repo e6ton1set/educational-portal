@@ -5,21 +5,24 @@
 <head>
     <meta charset="utf-8"/>
     <title>{% block title %}Фитнес онлайн{% endblock %}</title>
-    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
-<div id="header">
-    <a href="/" class="logo">Фитнес онлайн</a>
+    <div id="header">
+    <div class="logo-wrapper">
+      <a href="/" class="logo">Фитнес онлайн</a>
+      <img class="logo-img" src="{% static 'images/logo.jpg' %}" alt="logo">
+    </div>
     <ul class="menu">
         <span class="user">
           {% if request.user.is_authenticated %}
             Привет, {{ request.user.first_name|default:request.user.username }}!
-            <a href="{% url 'logout' %}"> Выйти</a>
+            <button disabled><a href="{% url 'logout' %}" class="exit">ВЫЙТИ</a></button>
           {% else %}
-            <a href="{% url 'login' %}">Войти</a>
+            <a href="{% url 'login' %}">ВОЙТИ</a>
           {% endif %}
         </span>
     </ul>
