@@ -3,12 +3,12 @@
 {% block title %}Вход{% endblock %}
 
 {% block content %}
-<h1>Вход</h1>
+<h1>Авторизация</h1>
 <div class="module">
     {% if form.errors %}
-    <p>Имя пользователя или пароль введены неверно. Попробуйте ещё раз.</p>
+    <p>Имя пользователя или пароль введены неверно. <br>Попробуйте ещё раз.</p>
     {% else %}
-    <p>Войти в систему:</p>
+    <p>Введите данные для входа</p>
     {% endif %}
     <div class="login-form">
         <form action="{% url 'login' %}" method="post">

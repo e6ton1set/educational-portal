@@ -5,18 +5,26 @@
 <head>
     <meta charset="utf-8"/>
     <title>{% block title %}Фитнес онлайн{% endblock %}</title>
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
 <div id="header">
     <a href="/" class="logo">Фитнес онлайн</a>
     <ul class="menu">
-        {% if request.user.is_authenticated %}
-        <li><a href="{% url 'logout' %}">Выйти</a></li>
-        {% else %}
-        <li><a href="{% url 'login' %}">Войти</a></li>
-        {% endif %}
+        <span class="user">
+          {% if request.user.is_authenticated %}
+            Привет, {{ request.user.first_name|default:request.user.username }}!
+            <a href="{% url 'logout' %}"> Выйти</a>
+          {% else %}
+            <a href="{% url 'login' %}">Войти</a>
+          {% endif %}
+        </span>
     </ul>
 </div>
+
 <div id="content">
     {% block content %} {% endblock %}
 </div>
