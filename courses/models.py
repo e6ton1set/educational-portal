@@ -40,9 +40,9 @@ class Course(models.Model):
 class Module(models.Model):
     course = models.ForeignKey(Course,
                                related_name='modules',
-                               on_delete=models.CASCADE)
-    title = models.CharField(max_length=128)
-    description = models.TextField(blank=True)
+                               on_delete=models.CASCADE,)
+    title = models.CharField(max_length=128, verbose_name='Название')
+    description = models.TextField(blank=True, verbose_name='Описание')
     order = OrderField(blank=True, for_fields=['course'])
 
     class Meta:
@@ -55,7 +55,8 @@ class Module(models.Model):
 class Content(models.Model):
     module = models.ForeignKey(Module,
                                related_name='contents',
-                               on_delete=models.CASCADE)
+                               on_delete=models.CASCADE,
+                               verbose_name='Модуль')
 
     content_type = models.ForeignKey(ContentType,
                                      on_delete=models.CASCADE,
@@ -63,10 +64,13 @@ class Content(models.Model):
                                          'text',
                                          'video',
                                          'image',
-                                         'file')})
-    object_id = models.PositiveIntegerField()
+                                         'file')},
+                                     verbose_name='Тип содержимого')
+    object_id = models.PositiveIntegerField(verbose_name='ID объекта')
     item = GenericForeignKey('content_type', 'object_id')
-    order = OrderField(blank=True, for_fields=['module'])
+    order = OrderField(blank=True,
+                       for_fields=['module'],
+                       verbose_name='Порядок')
 
     class Meta:
         ordering = ['order']
@@ -76,7 +80,7 @@ class ItemBase(models.Model):
     coach = models.ForeignKey(User,
                               related_name='%(class)s_related',
                               on_delete=models.CASCADE)
-    title = models.CharField(max_length=128)
+    title = models.CharField(max_length=128, verbose_name='Название')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -88,16 +92,16 @@ class ItemBase(models.Model):
 
 
 class Text(ItemBase):
-    content = models.TextField()
+    content = models.TextField(verbose_name='Описание')
 
 
 class File(ItemBase):
-    file = models.FileField(upload_to='files')
+    file = models.FileField(upload_to='files', verbose_name='Файл')
 
 
 class Image(ItemBase):
-    file = models.FileField(upload_to='images')
+    file = models.FileField(upload_to='images', verbose_name='Изображение')
 
 
 class Video(ItemBase):
-    url = models.URLField()
+    url = models.URLField(verbose_name='Видео')

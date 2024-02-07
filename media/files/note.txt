@@ -1,0 +1,2 @@
+
+FROM ubuntu:22.10 RUN apt-get update && \ apt-get install -y nginx && \ ln -s /usr/games/cowsay /usr/bin/cowsay && \ rm -rf /var/lib/apt/lists/* RUN echo 'Hi, I am in your container' \ >/usr/share/nginx/html/index.html RUN echo "daemon off;" >> /etc/nginx/nginx.conf CMD [ "nginx" ] EXPOSE 80
