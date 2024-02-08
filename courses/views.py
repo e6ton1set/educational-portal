@@ -9,9 +9,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin, \
     PermissionRequiredMixin
 from django.urls import reverse_lazy
 from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
-
+from django.db.models import Count
+from .models import Program
 from .forms import ModuleFormSet
 from .models import Course, Module, Content
+from django.views.generic.detail import DetailView
 
 
 class ManageCourseListView(ListView):
@@ -185,5 +187,27 @@ class ContentOrderView(CsrfExemptMixin,
     def post(self, request):
         for id, order in self.request_json.items():
             Content.objects.filter(id=id,
-                               module__course__coach=request.user).update(order=order)
+                                   module__course__coach=request.user).update(order=order)
         return self.render_json_response({'saved': 'OK'})
+
+
+class CourseListView(TemplateResponseMixin, View):
+    model = Course
+    template_name = 'courses/course/list.html'
+
+    def get(self, request, program=None):
+        programs = Program.objects.annotate(
+            total_courses=Count('courses'))
+        courses = Course.objects.annotate(
+            total_modules=Count('modules'))
+        if program:
+            program = get_object_or_404(Program, slug=program)
+            courses = courses.filter(program=program)
+        return self.render_to_response({'programs': programs,
+                                        'program': program,
+                                        'courses': courses})
+
+
+class CourseDetailView(DetailView):
+    model = Course
+    template_name = 'courses/course/detail.html'

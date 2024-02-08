@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ object.title }}
+{% endblock %}
+
+{% block content %}
+<h1>
+  {{ object.title }}
+</h1>
+<div class="module">
+  <h2>Описание</h2>
+  <p>
+    <a href="{% url 'course_list_program' object.program.slug %}">{{ object.title }}</a>
+    содержит {{ object.modules.count }}
+		{% if object.modules.count == 1 %}модуль
+		{% else %}модуля
+		{% endif %}
+    <p id="trainer">Тренер: {{ object.coach.get_full_name }}</p>
+  </p>
+  {{ object.review|linebreaks }}
+</div>
+{% endblock %}

@@ -10,14 +10,12 @@ body {
 a {
     color:#302f2fdd;
     text-decoration:none;
-    margin-top: 7px;
-    padding-inline: 4px;
 }
 
 #trainer {
     color: #0078af;
     margin-top: -5px;
-    padding-left: 4px;
+    padding-left: auto;
     font-weight: 410;
     margin-bottom: auto;
 }
@@ -265,14 +263,14 @@ ul#course-modules li {
 }
 
 .user {
-    width: 130px;
+    width: auto;
     height: auto;
     color: white;
     overflow: auto;
-    padding: 5px;
-    margin-right: -10px;
-    margin-bottom: -10px;
-    margin-top: -10px;
+    padding: auto;
+    margin-right: -8px;
+    margin-bottom: -8px;;
+    margin-top: -8px;
 }
 
 ul#course-modules li:nth-child(even) {
