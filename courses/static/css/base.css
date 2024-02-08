@@ -284,6 +284,8 @@ ul#course-modules li:hover {
 
 #module-contents div.placeholder {
     border:1px dashed #ccc;
+    opacity: 0.9;
+    background-color: #f2f2f2;
 }
 
 #module-contents form {
