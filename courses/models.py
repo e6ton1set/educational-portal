@@ -13,7 +13,7 @@ class Program(models.Model):
         ordering = ['title']
 
     def __str__(self):
-        return f"Программа {self.title}"
+        return f'Программа "{self.title}"'
 
 
 class Course(models.Model):
@@ -34,7 +34,7 @@ class Course(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f"Курс {self.title}"
+        return f'Курс "{self.title}"'
 
 
 class Module(models.Model):
