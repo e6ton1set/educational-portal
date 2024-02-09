@@ -42,7 +42,7 @@
 				{% endfor %}
 		</ul>
 </div>
-<div class="module">
+		<div class="module">
     {% for course in courses %}
         {% with program=course.program %}
             <h3>
@@ -65,8 +65,8 @@
             </p>
             {% endwith %}
     {% endfor %}
-</div>
-<div style="float: right;">
-    <img src="{% static 'images/home.png' %}" alt="Welcome to the site!">
+				<div style="float: right; width: 160%;">
+    <img src="{% static 'images/home.png' %}" alt="Welcome!">
+				</div>
 </div>
 {% endblock %}
