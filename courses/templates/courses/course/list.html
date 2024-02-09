@@ -1,32 +1,31 @@
 {% extends "base.html" %}
 
 {% block title %}
-	{% if program %}
-		{{ program.title }}
-	{% else %}
-		Все курсы
-	{% endif %}
-{% endblock %}
-
-{% block content %}
-	<h1>
 		{% if program %}
 			{{ program.title }}
 		{% else %}
-			Все курсы
+				Все курсы
 		{% endif %}
-	</h1>
+{% endblock %}
+
+{% block content %}
+<h1>
+				{% if program %}
+				{{ program.title }}
+		{% else %}
+				Все курсы
+		{% endif %}
+</h1>
+
 <div class="contents">
-	<h3>Программы</h3>
-	<ul id="modules">
-		<li {% if not program %}class="selected" {% endif %}>
-			<a href="{% url 'course_list' %}">Все</a>
-		</li>
-		{% for p in programs %}
-		<li {% if program == p %}class="selected" {% endif %}>
-			<a href="{% url 'course_list_program' p.slug %}"> {{ p.title }}
-				<br>
-				<span>
+		<h3>Программы</h3>
+		<ul id="modules">
+				<li {% if not program %}class="selected" {% endif %}>
+						<a href="{% url 'course_list' %}">Все</a>
+				</li>
+				{% for p in programs %}
+				<li {% if program == p %}class="selected" {% endif %}>
+						<a href="{% url 'course_list_program' p.slug %}"> {{ p.title }}	<br>	<span>
 				{% if p.total_courses == 1 %}
 					1 курс
 				{% elif p.total_courses == 0 %}
@@ -36,33 +35,33 @@
 				{% else %}
 					{{ p.total_courses }} курс{% if p.total_courses != 1 %}а{% endif %}
 				{% endif %}
- 				</span>
-			</a>
-		</li>
-		{% endfor %}
-	</ul>
+ 				</span>	</a>
+				</li>
+				{% endfor %}
+		</ul>
 </div>
-<div class="module">
-	{% for course in courses %}
-		{% with program=course.program %}
-			<h3>
-				<a href="{% url 'course_detail' course.slug %}">
-					{{ course.title }}
-				</a>
-			</h3>
-	<p>
-		<a href="{% url 'course_list_program' program.slug %}">{{ program }}</a>
-		{% if course.total_modules == 1 %}
-			содержит 1 модуль
-		{% elif course.total_modules == 0 %}
-			не содержит модулей
-		{% elif course.total_modules|divisibleby:10 and not course.total_modules|divisibleby:100 and course.total_modules != 11 %}
-  		содержит {{ course.total_modules }} модуль
-		{% else %}
-  		содержит {{ course.total_modules }} модул{% if course.total_modules != 1 %}я{% endif %}
-		{% endif %}
-		<p id="trainer">Тренер: {{ course.coach.get_full_name }} </p>
-	</p>
-	{% endwith %} {% endfor %}
+	<div class="module">
+		{% for course in courses %}
+				{% with program=course.program %}
+						<h3>
+								<a href="{% url 'course_detail' course.slug %}">	{{ course.title }}	</a>
+						</h3>
+						<p>
+								<a href="{% url 'course_list_program' program.slug %}">{{ program }}</a>
+								{% if course.total_modules == 1 %}
+										содержит 1 модуль
+								{% elif course.total_modules == 0 %}
+										не содержит модулей
+								{% elif course.total_modules|divisibleby:10 and not course.total_modules|divisibleby:100 and course.total_modules != 11 %}
+										содержит {{ course.total_modules }} модуль
+								{% else %}
+										содержит {{ course.total_modules }} модул{% if course.total_modules != 1 %}я{% endif %}
+								{% endif %}
+								<p id="trainer">
+										Тренер: {{ course.coach.get_full_name }}
+								</p>
+						</p>
+						{% endwith %}
+		{% endfor %}
 </div>
 {% endblock %}

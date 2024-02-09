@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from .fields import OrderField
+from django.template.loader import render_to_string
 
 
 class Program(models.Model):
@@ -83,7 +84,7 @@ class ItemBase(models.Model):
     coach = models.ForeignKey(User,
                               related_name='%(class)s_related',
                               on_delete=models.CASCADE)
-    title = models.CharField(max_length=128, verbose_name='Название')
+    title = models.CharField(max_length=128, verbose_name='Наименование')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -92,6 +93,9 @@ class ItemBase(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+    def render(self):
+        return render_to_string(f'courses/content/{self._meta.model_name}.html', {'item': self})
 
 
 class Text(ItemBase):
@@ -107,4 +111,4 @@ class Image(ItemBase):
 
 
 class Video(ItemBase):
-    url = models.URLField(verbose_name='Видео')
+    url = models.URLField(verbose_name='Ссылка на видео')
