@@ -22,6 +22,8 @@ a {
 
 ul {
     float:left;
+    inline-size: 280px;
+    font-size: 0.9em;
 }
 
 h2 {
@@ -67,7 +69,7 @@ h1 {
 .module {
     padding:10px 40px;
     float:left;
-    width:auto;
+    width:600px;
 }
 
 .module h3 {
@@ -81,7 +83,9 @@ h1 {
 
 .module p {
     margin:10px 0 20px;
-    width:100%;
+    padding: auto;
+    margin-left: -20px;
+    width:55%;
     float:left;
 }
 
@@ -189,7 +193,7 @@ ul.content-types li {
 }
 
 form p {
-    overflow:auto;
+    overflow:auto
 }
 
 .errorlist {
