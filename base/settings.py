@@ -27,6 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
+
 INSTALLED_APPS = [
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
@@ -38,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

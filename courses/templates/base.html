@@ -1,13 +1,14 @@
 {% load static %}
 
+{% load custom_tags %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
     <title>{% block title %}Фитнес онлайн{% endblock %}</title>
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
@@ -15,7 +16,14 @@
     <div class="logo-wrapper">
       <a href="/" class="logo">Фитнес онлайн</a>
       <img class="logo-img" src="{% static 'images/logo.jpg' %}" alt="logo">
-    </div>
+						{% if request.user.is_authenticated %}
+								<a id="nav-all-course" href="{% url 'course_list' %}">ВСЕ КУРСЫ</a>
+								<a id="nav-my-course" href="{% url 'student_course_list' %}">МОИ КУРСЫ</a>
+						{% endif %}
+						{% if request.user.is_authenticated and request.user|is_trainer %}
+								<a id="nav-trainer" href="{% url 'manage_course_list' %}">УПРАВЛЕНИЕ</a>
+						{% endif %}
+				</div>
     <ul class="menu">
         <span class="user">
           {% if request.user.is_authenticated %}

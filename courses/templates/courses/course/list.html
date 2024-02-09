@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}
 		{% if program %}
 			{{ program.title }}
@@ -40,28 +42,31 @@
 				{% endfor %}
 		</ul>
 </div>
-	<div class="module">
-		{% for course in courses %}
-				{% with program=course.program %}
-						<h3>
-								<a href="{% url 'course_detail' course.slug %}">	{{ course.title }}	</a>
-						</h3>
-						<p>
-								<a href="{% url 'course_list_program' program.slug %}">{{ program }}</a>
-								{% if course.total_modules == 1 %}
-										содержит 1 модуль
-								{% elif course.total_modules == 0 %}
-										не содержит модулей
-								{% elif course.total_modules|divisibleby:10 and not course.total_modules|divisibleby:100 and course.total_modules != 11 %}
-										содержит {{ course.total_modules }} модуль
-								{% else %}
-										содержит {{ course.total_modules }} модул{% if course.total_modules != 1 %}я{% endif %}
-								{% endif %}
-								<p id="trainer">
-										Тренер: {{ course.coach.get_full_name }}
-								</p>
-						</p>
-						{% endwith %}
-		{% endfor %}
+<div class="module">
+    {% for course in courses %}
+        {% with program=course.program %}
+            <h3>
+                <a href="{% url 'course_detail' course.slug %}">  {{ course.title }}  </a>
+            </h3>
+            <p>
+                <a href="{% url 'course_list_program' program.slug %}">{{ program }}</a>
+                {% if course.total_modules == 1 %}
+                    содержит 1 модуль
+                {% elif course.total_modules == 0 %}
+                    не содержит модулей
+                {% elif course.total_modules|divisibleby:10 and not course.total_modules|divisibleby:100 and course.total_modules != 11 %}
+                    содержит {{ course.total_modules }} модуль
+                {% else %}
+                    содержит {{ course.total_modules }} модул{% if course.total_modules != 1 %}я{% endif %}
+                {% endif %}
+                <p id="trainer">
+                    Тренер: {{ course.coach.get_full_name }}
+                </p>
+            </p>
+            {% endwith %}
+    {% endfor %}
+</div>
+<div style="float: right;">
+    <img src="{% static 'images/home.png' %}" alt="Welcome to the site!">
 </div>
 {% endblock %}
