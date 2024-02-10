@@ -126,3 +126,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Перенаправление на student_course_list после входа
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
+
+# Конфигурация сервера электронной почты
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'testblogapp1@gmail.com'
+EMAIL_HOST_PASSWORD = 'woyc moos ibum bjbw'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

@@ -476,10 +476,21 @@ h1 {
 }
 
 .module {
-    padding:10px 40px;
-    float:left;
-    width:600px;
+    padding-left: 20px;
+    padding-top: 20px;
+    float: left;
+    width: 600px;
+    align-content: center;
 }
+
+.login-form {
+    text-align: center;
+}
+
+.forgot-password {
+    padding-left: 13%;
+}
+
 
 .module h3 {
     font-size: 30px;
@@ -487,7 +498,7 @@ h1 {
     margin:20px 0 0;
     padding:0;
     color: black;
-    width:100%;
+    width:50%;
 }
 
 .module p {
@@ -807,5 +818,17 @@ ul#course-modules li:hover {
 .exit:hover {
     background-color: #ba0000;
     border: none;
+}
+
+.blue-link {
+    color: blue;
+}
+
+.info-message {
+    background-color: #e6f7ff;
+    color: #21709e;
+    padding: 20px;
+    border: 2px solid #b0dbff;
+    border-radius: 4px;
 }
 

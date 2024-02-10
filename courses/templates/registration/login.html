@@ -6,17 +6,20 @@
 
 <h1>Авторизация</h1>
 <div class="module">
-    {% if form.errors %}
-    <p>Имя пользователя или пароль введены неверно.
-			<br>Попробуйте ещё раз.</p>
-    {% else %}
-    <p>Введите данные для входа</p>
-    {% endif %}
-    <div class="login-form">
-        <form action="{% url 'login' %}" method="post">
-            {{ form.as_p }} {% csrf_token %} <input type="hidden" name="next" value="{{ next }}"/>
-            <p><input type="submit" value="Войти"></p>
-        </form>
-    </div>
+  {% if form.errors %}
+  <p>Имя пользователя или пароль введены неверно.
+    <br>Попробуйте ещё раз.</p>
+  {% else %}
+  <p>Введите данные для входа</p>
+  {% endif %}
+  <div class="login-form">
+    <form action="{% url 'login' %}" method="post">
+      {{ form.as_p }} {% csrf_token %} <input type="hidden" name="next" value="{{ next }}"/>
+      <p><input type="submit" value="Войти"></p>
+    </form>
+  </div>
+  <p class="forgot-password">
+    <a href="{% url 'password_reset' %}" class="blue-link">Забыли пароль?</a>
+  </p>
 </div>
 {% endblock %}

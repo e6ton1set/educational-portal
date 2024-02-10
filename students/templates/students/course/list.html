@@ -12,11 +12,14 @@
 										<a href="{% url 'student_course_detail' course.id %}">Доступ к содержимому</a>
 								</p>
 						</div>
-					{% empty %}
-							<p>
-									Вы еще не записались ни на какие курсы
-									<a href="{% url 'course_list' %}" style="color: blue">Посмотреть список</a>
+								{% empty %}
+				<div class="info-message">
+						<p>Вы еще не записались ни на какие курсы
+							<a href="{% url 'course_list' %}" style="color: blue">Посмотреть список</a>
 									доступных для записи курсов
-						</p>{% endfor %}
+					</p>
+				</div>
 		</div>
+
+{% endfor %}
 {% endblock %}
