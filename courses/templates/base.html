@@ -27,8 +27,10 @@
     <ul class="menu">
         <span class="user">
           {% if request.user.is_authenticated %}
-            Привет, {{ request.user.first_name|default:request.user.username }}!
-            <button disabled><a href="{% url 'logout' %}" class="exit">ВЫЙТИ</a></button>
+            Привет, {{ request.user.first_name|default:request.user.username|upper }}!
+												<br>
+												<a href="{% url 'logout' %}" class="exit">ВЫЙТИ</a>
+												<a href="{% url 'password_change' %}" class="exit">ИЗМЕНИТЬ ПАРОЛЬ</a>
           {% else %}
             <a href="{% url 'login' %}">ВОЙТИ</a>
           {% endif %}
