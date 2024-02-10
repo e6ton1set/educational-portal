@@ -1,11 +1,13 @@
 @import url(//fonts.googleapis.com/css?family=Roboto:500,300,400);
 
 body {
-    margin:0;
-    font-family:'Roboto', sans-serif;
-    font-weight:400;
-    color:#413c3c;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #413c3c;
+    width: 101vw;
 }
+
 
 a {
     color:#302f2fdd;
@@ -23,7 +25,9 @@ a {
 
 ul {
     float:left;
-    inline-size: 280px;
+    padding-top: 0;
+    margin-top: 0;
+    inline-size: 200px;
     font-size: 0.9em;
 }
 
@@ -114,14 +118,15 @@ h1 {
 }
 
 #header .menu {
-    list-style:none;
-    float:right;
+    list-style: none;
+    float: right;
     margin-bottom: 0;
-    padding:0;
+    padding: 0;
     text-decoration: none;
     justify-content: center;
-    display: flex;
+    display: inline-flex;
 }
+
 
 .contents {
     width:20%;
@@ -468,11 +473,14 @@ h1 {
     color: black;
     font-weight: bold;
     margin-right: 10px;
+    width: 30%;
+    white-space: nowrap;
 }
+
 
 .logo-img {
     height: auto;
-    padding-right: 10px;
+    margin-left: 18px;
 }
 
 .module {
@@ -763,6 +771,7 @@ ul#course-modules li:hover {
 
 
 #nav-all-course, #nav-my-course, #nav-trainer {
+    white-space: nowrap;
     padding-left: 25px;
     height: auto;
     transition: transform 0.2s ease;
@@ -810,6 +819,7 @@ ul#course-modules li:hover {
     background-color: #0042ff;
     text-decoration: none;
     font-weight: 500;
+    font-size: 11px;
     cursor: pointer;
     outline: none;
     border-style: none;
@@ -819,6 +829,7 @@ ul#course-modules li:hover {
     background-color: #ba0000;
     border: none;
 }
+
 
 .blue-link {
     color: blue;
